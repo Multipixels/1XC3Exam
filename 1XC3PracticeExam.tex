@@ -51,7 +51,7 @@ Name : \underline{\hspace{2.5in}} Student No. : \underline{\hspace{2in}}
 
 \fbox{\parbox{5.5in}{\centering
 \textbf{COMPSCI 1XC3 PRACTICE EXAM}\\[0pt]
-April 11\textsuperscript{\textit{th}}, 2023\\
+April 12\textsuperscript{\textit{th}}, 2023\\
 Instructor: Richie Motorgeanu (totally)\\
 Duration: 150 minutes
 }}
@@ -550,7 +550,7 @@ ii) Give all files in the current directory executable permissions.
 
 iii) Appends lines 3-7 of "main.bash" to "myCollection.txt"
 
-You can assume that the current directory contains only files.
+You can assume that the current directory contains only files. You can also assume "main.bash" exists.
 
 \textbf{Answer:}
 
@@ -565,7 +565,7 @@ You can assume that the current directory contains only files.
 \begin{center}\noindent\rule{6in}{0.4pt}\end{center}
 
 % QUESTION 17
-\textbf{Question 17} (12 points) Write a C program that reads the content of "myCollection.txt" and copies the content over to "myCollectionCopy.txt".
+\textbf{Question 17} (12 points) Write a C program that reads the content of "myCollection.txt" and copies all vowel characters over to "yoeioo.txt".
 
 You can assume that the files already exist.
 
@@ -587,8 +587,8 @@ You can assume that the files already exist.
 \begin{lstlisting}
 struct BinTree {
 	int value;
-	BinTree *left;
-	BinTree *right;
+	struct BinTree *left;
+	struct BinTree *right;
 };
 \end{lstlisting}
 
@@ -621,9 +621,9 @@ struct BinTree {
 % QUESTION 19
 \textbf{Question 19} (18 points) There are two parts to this question. Part 1 is 10 points, Part 2 is 8 points.
 
-i) Create a struct for a Singly-Linked List named "Student". It should store an integer field named "debt" and a string field (length 20) named "name". Suppose you have a pointer "head" that points to the head of a linked list. Create a function "frontInsert" that takes in a pointer to the head pointer, an integer "newDebt", and a string (length 20) "newName". The function should create a new Student and set that to be the new head of the linked list.
+i) Create a struct for a Singly-Linked List named "Student". It should store an integer field named "debt". Suppose you have a pointer "head" that points to the head of a linked list. Create a function "frontInsert" that takes in a pointer to the head pointer and an integer "newDebt". The function should create a new Student with "newDebt" debt and set that to be the new head of the linked list.
 
-ii) Create a function "reverseList" that takes in a pointer to the head pointer and any other parameters that might help. The function should reverse the order of the linked list, so that the end of the linked list becomes the new head.
+ii) Create a function "reverseList" that takes in a pointer to the head pointer. The function should reverse the order of the linked list, so that the end of the linked list becomes the new head.
 
 \textbf{Answer:}
 

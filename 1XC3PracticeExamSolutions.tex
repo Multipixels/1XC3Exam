@@ -3,6 +3,8 @@
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
 
+\usepackage{movie15}
+
 \usepackage[T1]{fontenc}
 
 \usepackage{hyperref}
@@ -50,8 +52,8 @@ Name : \underline{\hspace{2.5in}} Student No. : \underline{\hspace{2in}}
 \fbox{
 
 \fbox{\parbox{5.5in}{\centering
-\textbf{COMPSCI 1XC3 PRACTICE EXAM}\\[0pt]
-April 11\textsuperscript{\textit{th}}, 2023\\
+\textbf{COMPSCI 1XC3 PRACTICE EXAM - SOLUTIONS}\\[0pt]
+April 12\textsuperscript{\textit{th}}, 2023\\
 Instructor: Richie Motorgeanu (totally)\\
 Duration: 150 minutes
 }}
@@ -690,9 +692,9 @@ cat main.bash | head -7 | tail -5 | xargs -i echo {} >> "myCollection.txt"
 \begin{center}\noindent\rule{6in}{0.4pt}\end{center}
 
 % QUESTION 17
-\textbf{Question 17} (12 points) Write a C program that reads the content of "myCollection.txt" and copies the content over to "myCollectionCopy.txt".
+\textbf{Question 17} (12 points) Write a C program that reads the content of "myCollection.txt" and copies all vowel characters over to "yoeioo.txt".
 
-You can assume that the files already exist.
+You can assume that the files already exist. Include y in the vowels.
 
 \textbf{Answer:}
 
@@ -701,12 +703,14 @@ You can assume that the files already exist.
 
 int main(void) {
 	FILE *inputFile = fopen("myCollection.txt", "r");
-	FILE *outputFile = fopen("noitcelloCym.txt", "w");
+	FILE *outputFile = fopen("yoeioo.txt", "w");
 
 	char t;
 	
 	while(fscanf(inputFile, "%c", &t) == 1) {
-		fprintf(outputFile, "%c", t);
+		if(t == 'a' || t == 'e' || t == 'i' || t == 'o' || t == 'u' || t == 'y') {
+			fprintf(outputFile, "%c", t);
+		}
 	}
 
 	fclose(inputFile);
@@ -730,8 +734,8 @@ int main(void) {
 \begin{lstlisting}
 struct BinTree {
 	int value;
-	BinTree *left;
-	BinTree *right;
+	struct BinTree *left;
+	struct BinTree *right;
 };
 \end{lstlisting}
 
@@ -747,9 +751,28 @@ struct BinTree {
 
 5) Add up the sum of the left tree, right tree, and the value of the current Node and return this value.
 
-\includegraphics[scale=0.2]{tree}
+\includegraphics[scale=0.15]{tree}
 
 \textbf{Answer:}
+
+\begin{lstlisting}
+typedef struct BinTree bintree;
+int treeSum(bintree root) {
+
+	int leftSum = 0;
+	int rightSum = 0;
+
+	if(root.left != 0) {
+		leftSum = treeSum(*root.left);
+	}
+
+	if(root.right != 0) {
+		rightSum = treeSum(*root.right);
+	}
+	
+	return root.value + leftSum + rightSum;
+}
+\end{lstlisting}
 
 \newpage
 
@@ -764,11 +787,46 @@ struct BinTree {
 % QUESTION 19
 \textbf{Question 19} (18 points) There are two parts to this question. Part 1 is 10 points, Part 2 is 8 points.
 
-i) Create a struct for a Singly-Linked List named "Student". It should store an integer field named "debt" and a string field (length 20) named "name". Suppose you have a pointer "head" that points to the head of a linked list. Create a function "frontInsert" that takes in a pointer to the head pointer, an integer "newDebt", and a string (length 20) "newName". The function should create a new Student and set that to be the new head of the linked list.
+i) Create a struct for a Singly-Linked List named "Student". It should store an integer field named "debt". Suppose you have a pointer "head" that points to the head of a linked list. Create a function "frontInsert" that takes in a pointer to the head pointer and an integer "newDebt". The function should create a new Student with "newDebt" debt and set that to be the new head of the linked list.
 
-ii) Create a function "reverseList" that takes in a pointer to the head pointer and any other parameters that might help. The function should reverse the order of the linked list, so that the end of the linked list becomes the new head.
+ii) Create a function "reverseList" that takes in a pointer to the head pointer. The function should reverse the order of the linked list, so that the end of the linked list becomes the new head.
 
 \textbf{Answer:}
+
+\begin{lstlisting}
+typedef struct Student student;
+
+struct Student {
+	int debt;
+	student *next;
+};
+
+void frontInsert(student **head, int newDebt) {
+	student *newStudent = malloc(sizeof(student));
+	newStudent -> next = *head;
+	newStudent -> debt = newDebt;
+	*head = newStudent;
+}
+
+void reverse(student **head) {
+	student *previous = 0;
+	student *current = *head;
+	student *next = *head;
+	
+	while(next != 0) {
+		next = current -> next;
+		current -> next = previous;
+		previous = current;
+		current = next;
+	}
+
+	*head = previous;
+}
+\end{lstlisting}
+
+\textcolor{blue}{Note: A variable declared within a function will \textbf{disappear} after the function returns. By using malloc, we allocate the neccessary memory to allow newStudent to persist after the function returns. LMK if I'm just being dumb and I'll update the solution.}
+
+\textcolor{blue}{\href{https://www.geeksforgeeks.org/reverse-a-linked-list/}{\underline{Here}} is a wonderful resource that helps explain the reversing of a linked list.}
 
 \newpage
 
