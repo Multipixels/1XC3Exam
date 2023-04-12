@@ -184,17 +184,17 @@ WIDTH=1920 \newline HEIGHT=1080 \newline MONITORS=3
 \textbf{Question 4} (3 points) Given the following lines of code, pick the most correct answer.
 
 \begin{center}
-i) sizeof(int);\\
-ii) sizeof(int*);\\
+i) sizeof(int*);\\
+ii) sizeof(float*);\\
 iii) sizeof(int**);\\
 \end{center}
 
 \begin{center}
 
 \begin{tabular} { c  c } 
-  \textbf{A. i), ii), and iii) would compile successfully and return 4.}\\
+  \textbf{A. i), ii), and iii) would compile successfully and return the same values.}\\
   B. i), ii), and iii) would compile successfully but return different values. \\ 
-  C. i) and ii) would compile successfully and return 4, but iii) would not compile. \\ 
+  C. i) and ii) would compile successfully and return the same values, but iii) would not compile. \\ 
   D. i) and ii) would compile successfully but return different values, and iii) would not compile.
 \end{tabular}
 
@@ -303,7 +303,7 @@ cat notes.txt | head -3 | tail -3
 \textbf{Question 10} (3 points) Given the following line of code, which of these is not a valid way to get the address of the first element in an array?
 
 \begin{center}
-int arr[5] = {1,2,3,4,5};
+int arr[5] = \{1,2,3,4,5\};
 \end{center}
 
 \begin{center}
@@ -692,7 +692,7 @@ cat main.bash | head -7 | tail -5 | xargs -i echo {} >> "myCollection.txt"
 \begin{center}\noindent\rule{6in}{0.4pt}\end{center}
 
 % QUESTION 17
-\textbf{Question 17} (12 points) Write a C program that reads the content of "myCollection.txt" and copies all vowel characters over to "yoeioo.txt".
+\textbf{Question 17} (12 points) Write a C program that reads the content of "myCollection.txt" and copies all lowercase vowel characters over to "yoeioo.txt".
 
 You can assume that the files already exist. Include y in the vowels.
 
